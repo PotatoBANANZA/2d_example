@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91fc53aa0eb4f4791f73a12e99346d4, type: 3}
+  m_Name: FatDragon
+  m_EditorClassIdentifier: 
+  MonsterTypeId: 3
+  Hp: 100
+  Damage: 30
+  MaxLootValue: 10
+  MinLootValue: 0
+  EffectiveDistance: 1
+  Cleavage: 0.5
+  MoveSpeed: 5
+  PrefabReference:
+    m_AssetGUID: c09d884e7ca40460f91e5b20675d3e94
+    m_SubObjectName: 
+    m_SubObjectType: 

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a28a6feec1484aa1c04daa3a58b39d, type: 3}
+  m_Name: Graveyard
+  m_EditorClassIdentifier: 
+  LevelKey: Main
+  EnemySpawners:
+  - Id: SpawnMarker_6134952b-7547-4ea7-9ec3-327d010bbcb2
+    MonsterTypeId: 2
+    Position: {x: 0.13847876, y: 0.1227684, z: 10.385698}
+  - Id: Main_33ec1e17-31d9-4c34-9b93-552ae2ea43cd
+    MonsterTypeId: 1
+    Position: {x: -12.01, y: 0.2227683, z: -12.84}
+  - Id: Main_d72a7202-d1f5-49c3-9a82-7140d86cc074
+    MonsterTypeId: 1
+    Position: {x: 0.30018377, y: 0.3727684, z: -14.304844}
+  - Id: Main_0c3d001a-18cd-43d5-8a07-4c4b7c12f771
+    MonsterTypeId: 1
+    Position: {x: -14.753568, y: 0.66276836, z: -4.7960496}
+  - Id: Main_63b26722-cc31-4968-9146-b9a9e96088ef
+    MonsterTypeId: 1
+    Position: {x: 9.46, y: 0.3727684, z: 1.0500002}
+  InitialHeroPosition: {x: 9.98, y: 1.24, z: -14.12}
+  LevelTransfer:
+    TransferTo: Dungeon
+    Position: {x: -4.65, y: 1.06, z: -14.38622}
