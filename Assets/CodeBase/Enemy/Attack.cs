@@ -72,7 +72,6 @@ namespace CodeBase.Enemy
       int hitAmount = Physics2D.OverlapCircleNonAlloc(StartPoint(), Cleavage, _hits, _layerMask);
 
       hit = _hits.FirstOrDefault();
-      
       return hitAmount > 0;
     }
 
