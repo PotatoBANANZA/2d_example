@@ -36,7 +36,8 @@ namespace CodeBase.Enemy
       _animator.SetFloat(Speed, speed);
     }
 
-    public void StopMoving() => _animator.SetBool(IsMoving, false);
+    public void StopMoving() => 
+      _animator.SetBool(IsMoving, false);
 
     public void PlayAttack() => _animator.SetTrigger(Attack);
 

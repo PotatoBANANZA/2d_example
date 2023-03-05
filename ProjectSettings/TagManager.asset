@@ -29,8 +29,8 @@ TagManager:
   - AttackZone
   - Hittable
   - Pickup
-  - 
-  - 
+  - Enemy
+  - Ground
   - 
   - 
   - 

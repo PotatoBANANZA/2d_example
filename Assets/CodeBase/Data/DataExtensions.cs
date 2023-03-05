@@ -26,5 +26,17 @@ namespace CodeBase.Data
 
     public static T ToDeserialized<T>(this string json) =>
       JsonUtility.FromJson<T>(json);
+    
+    public static Vector2 DirectionAtTarget(this Vector3 from, Vector2 to)
+    {
+      Vector2 directionToPlayer = new Vector2 (
+          to.x - from.x,
+          to.y - from.y)
+        .normalized;
+      return directionToPlayer;
+    }
+    
+    public static Vector2 BlockYAxis(this Vector2 direction) => 
+      new Vector2(direction.x, direction.y = 0);
   }
 }

@@ -67,3 +67,6 @@ namespace CodeBase.Hero
     }
   }
 }
+namespace CodeBase.Hero
+{
+}

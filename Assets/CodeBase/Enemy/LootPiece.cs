@@ -31,7 +31,7 @@ namespace CodeBase.Enemy
     private void Start() => 
       _id = GetComponent<UniqueId>().Id;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
       if (!_pickedUp)
       {

@@ -15,7 +15,7 @@ namespace CodeBase.Logic
     public void Construct(IGameStateMachine stateMachine) => 
       _stateMachine = stateMachine;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
       if(_triggered)
         return;

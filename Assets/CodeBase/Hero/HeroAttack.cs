@@ -9,17 +9,19 @@ using UnityEngine;
 
 namespace CodeBase.Hero
 {
-  [RequireComponent(typeof(HeroAnimator), typeof(CharacterController))]
+  [RequireComponent(typeof(HeroAnimator), typeof(Collider2D))]
   public class HeroAttack : MonoBehaviour, ISavedProgressReader
   {
     public HeroAnimator Animator;
-    public CharacterController CharacterController;
+    public Collider2D HeroCollider;
+    public float AttackDistance;
 
     private IInputService _inputService;
 
     private static int _layerMask;
-    private Collider[] _hits = new Collider[3];
+    private Collider2D[] _hits = new Collider2D[3];
     private Stats _stats;
+
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ namespace CodeBase.Hero
 
     private void OnAttack()
     {
-      PhysicsDebug.DrawDebug(StartPoint() + transform.forward, _stats.DamageRadius, 1.0f);
+      PhysicsDebug.DrawDebug(StartPoint() + (transform.right * AttackDistance), _stats.DamageRadius, 1.0f);
       for (int i = 0; i < Hit(); ++i)
       {
         _hits[i].transform.parent.GetComponent<IHealth>().TakeDamage(_stats.Damage);
@@ -44,14 +46,17 @@ namespace CodeBase.Hero
     }
 
     private int Hit() => 
-      Physics.OverlapSphereNonAlloc(StartPoint() + transform.forward, _stats.DamageRadius, _hits, _layerMask);
+      Physics2D.OverlapCircleNonAlloc(StartPoint() + (transform.right * AttackDistance) , _stats.DamageRadius, _hits, _layerMask);
 
     private Vector3 StartPoint() =>
-      new Vector3(transform.position.x, CharacterController.center.y / 2, transform.position.z);
+      new Vector3(GetCenter(HeroCollider).x,transform.position.y, transform.position.z);
 
-    public void LoadProgress(PlayerProgress progress)
-    {
+    public void LoadProgress(PlayerProgress progress) => 
       _stats = progress.HeroStats;
-    }
+
+    private Vector2 GetCenter(Collider2D heroCollider) =>
+      new Vector2(
+        heroCollider.transform.position.x + heroCollider.offset.x,
+        heroCollider.transform.position.y + heroCollider.offset.y);
   }
 }

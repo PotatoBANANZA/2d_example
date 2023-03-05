@@ -15,7 +15,7 @@ namespace CodeBase.Enemy
     public float Damage = 10;
 
     private Transform _heroTransform;
-    private Collider[] _hits = new Collider[1];
+    private Collider2D[] _hits = new Collider2D[1];
     private int _layerMask;
     private float _attackCooldown;
     private bool _isAttacking;
@@ -38,9 +38,10 @@ namespace CodeBase.Enemy
 
     private void OnAttack()
     {
-      if (Hit(out Collider hit))
+      if (Hit(out Collider2D hit))
       {
-        //PhysicsDebug.DrawDebug(StartPoint(), Cleavage, 1.0f);
+        
+        PhysicsDebug.DrawDebug(StartPoint(), Cleavage, 1.0f);
         hit.transform.GetComponent<IHealth>().TakeDamage(Damage);
       }
     }
@@ -66,9 +67,9 @@ namespace CodeBase.Enemy
         _attackCooldown -= Time.deltaTime;
     }
 
-    private bool Hit(out Collider hit)
+    private bool Hit(out Collider2D hit)
     {
-      var hitAmount = Physics.OverlapSphereNonAlloc(StartPoint(), Cleavage, _hits, _layerMask);
+      int hitAmount = Physics2D.OverlapCircleNonAlloc(StartPoint(), Cleavage, _hits, _layerMask);
 
       hit = _hits.FirstOrDefault();
       
@@ -77,8 +78,8 @@ namespace CodeBase.Enemy
 
     private Vector3 StartPoint()
     {
-      return new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z) +
-             transform.forward * EffectiveDistance;
+      return new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z) +
+             transform.right * EffectiveDistance;
     }
 
     private bool CanAttack() => 
@@ -86,7 +87,6 @@ namespace CodeBase.Enemy
 
     private void StartAttack()
     {
-      transform.LookAt(_heroTransform);
       Animator.PlayAttack();
       _isAttacking = true;
     }

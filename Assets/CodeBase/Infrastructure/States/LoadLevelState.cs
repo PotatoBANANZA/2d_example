@@ -71,9 +71,9 @@ namespace CodeBase.Infrastructure.States
     {
       LevelStaticData levelData = LevelStaticData();
 
+      GameObject hero = await InitHero(levelData);
       await InitSpawners(levelData);
       await InitLootPieces();
-      GameObject hero = await InitHero(levelData);
       await InitLevelTransfer(levelData);
       await InitHud(hero);
       CameraFollow(hero);

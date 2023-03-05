@@ -6,8 +6,6 @@ namespace CodeBase.Enemy
 {
   public class RotateToHero : Follow
   {
-    public float Speed;
-
     private Transform _heroTransform;
     private Vector3 _positionToLook;
 
@@ -41,5 +39,10 @@ namespace CodeBase.Enemy
 
     private float SpeedFactor() =>
       Speed * Time.deltaTime;
+
+    public override void MoveToTarget(Vector2 position)
+    {
+      
+    }
   }
 }

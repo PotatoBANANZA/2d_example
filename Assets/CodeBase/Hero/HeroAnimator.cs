@@ -6,7 +6,7 @@ namespace CodeBase.Hero
 {
   public class HeroAnimator : MonoBehaviour, IAnimationStateReader
   {
-    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private HeroMove2D _heroMove;
     [SerializeField] public Animator _animator;
 
     private static readonly int MoveHash = Animator.StringToHash("Walking");
@@ -14,7 +14,7 @@ namespace CodeBase.Hero
     private static readonly int HitHash = Animator.StringToHash("Hit");
     private static readonly int DieHash = Animator.StringToHash("Die");
 
-    private readonly int _idleStateHash = Animator.StringToHash("Idle");
+    private readonly int _idleStateHash = Animator.StringToHash("Idles");
     private readonly int _idleStateFullHash = Animator.StringToHash("Base Layer.Idle");
     private readonly int _attackStateHash = Animator.StringToHash("Attack Normal");
     private readonly int _walkingStateHash = Animator.StringToHash("Run");
@@ -24,12 +24,13 @@ namespace CodeBase.Hero
     public event Action<AnimatorState> StateExited;
 
     public AnimatorState State { get; private set; }
-    public bool IsAttacking => State == AnimatorState.Attack;
-
-    private void Update()
+    public bool IsAttacking
     {
-      _animator.SetFloat(MoveHash, _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
+      get { return State == AnimatorState.Attack; }
     }
+
+    public void Update() => 
+      _animator.SetFloat(MoveHash, Math.Abs(_heroMove.MovementVector.x));
 
     public void PlayHit()
     {

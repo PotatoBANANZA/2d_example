@@ -7,6 +7,7 @@ namespace CodeBase.Enemy
   {
     public TriggerObserver TriggerObserver;
     public Follow Follow;
+    public BackToStartPosition BackToStartPosition;
 
     public float Cooldown;
     private bool _hasAggroTarget;
@@ -30,7 +31,7 @@ namespace CodeBase.Enemy
       TriggerObserver.TriggerExit -= TriggerExit;
     }
 
-    private void TriggerEnter(Collider obj)
+    private void TriggerEnter(Collider2D obj)
     {
       if(_hasAggroTarget) return;
       
@@ -39,7 +40,7 @@ namespace CodeBase.Enemy
       SwitchFollowOn();
     }
 
-    private void TriggerExit(Collider obj)
+    private void TriggerExit(Collider2D obj)
     {
       if(!_hasAggroTarget) return;
       
@@ -65,12 +66,14 @@ namespace CodeBase.Enemy
     {
       _hasAggroTarget = true;
       Follow.enabled = true;
+      BackToStartPosition.enabled = false;
     }
 
     private void SwitchFollowOff()
     {
       Follow.enabled = false;
       _hasAggroTarget = false;
+      BackToStartPosition.enabled = true;
     }
   }
 }

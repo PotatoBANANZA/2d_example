@@ -3,24 +3,29 @@ using UnityEngine.AI;
 
 namespace CodeBase.Enemy
 {
-  [RequireComponent(typeof(NavMeshAgent))]
   [RequireComponent(typeof(EnemyAnimator))]
   public class AnimateAlongAgent : MonoBehaviour
   {
+    public AgentMoveToPlayer Agent;
     private const float MinimalVelocity = 0.1f;
     
-    [SerializeField] private NavMeshAgent Agent;
     [SerializeField] private EnemyAnimator Animator;
 
     private void Update()
     {
-      if(ShouldMove())
-        Animator.Move(Agent.velocity.magnitude);
-      else 
+      if (ShouldMove())
+        Animator.Move(Agent.Velocity * Agent.Speed);
+      else
+      {
         Animator.StopMoving();
+      }
     }
 
-    private bool ShouldMove() => 
-      Agent.velocity.magnitude > MinimalVelocity && Agent.remainingDistance > Agent.radius;
+    private bool ShouldMove()
+    {
+      //Debug.Log("Agent.Velocity " + Agent.Velocity + "||| Agent.RemainingDistance " + Agent.RemainingDistance);
+      
+      return Agent.Velocity > MinimalVelocity && Agent.RemainingDistance > Agent.MinimalDistance;
+    }
   }
 }

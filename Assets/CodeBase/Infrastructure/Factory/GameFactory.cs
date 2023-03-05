@@ -98,15 +98,13 @@ namespace CodeBase.Infrastructure.Factory
       health.Max = monsterData.Hp;
 
       monster.GetComponent<ActorUI>().Construct(health);
-      monster.GetComponent<NavMeshAgent>().speed = monsterData.MoveSpeed;
-
       Attack attack = monster.GetComponent<Attack>();
       attack.Construct(_heroGameObject.transform);
       attack.Damage = monsterData.Damage;
       attack.Cleavage = monsterData.Cleavage;
       attack.EffectiveDistance = monsterData.EffectiveDistance;
 
-      monster.GetComponent<AgentMoveToPlayer>()?.Construct(_heroGameObject.transform);
+      monster.GetComponent<AgentMoveToPlayer>()?.Construct(_heroGameObject.transform, monsterData.MoveSpeed);
       monster.GetComponent<RotateToHero>()?.Construct(_heroGameObject.transform);
 
       LootSpawner lootSpawner = monster.GetComponentInChildren<LootSpawner>();
@@ -143,7 +141,7 @@ namespace CodeBase.Infrastructure.Factory
       _assets.Cleanup();
     }
     
-    private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
+    private GameObject InstantiateRegistered(GameObject prefab, Vector2 at)
     {
       GameObject gameObject = Object.Instantiate(prefab, at, Quaternion.identity);
       RegisterProgressWatchers(gameObject);
@@ -159,7 +157,7 @@ namespace CodeBase.Infrastructure.Factory
       return gameObject;
     }
 
-    private async Task<GameObject> InstantiateRegisteredAsync(string prefabPath, Vector3 at)
+    private async Task<GameObject> InstantiateRegisteredAsync(string prefabPath, Vector2 at)
     {
       GameObject gameObject = await _assets.Instantiate(path: prefabPath, at: at);
       RegisterProgressWatchers(gameObject);

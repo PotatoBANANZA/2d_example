@@ -2,8 +2,7 @@ namespace CodeBase.StaticData
 {
   public enum MonsterTypeId
   {
-    Lich = 1,
-    Golem = 2,
-    FatDragon = 3,
+    Dog = 1,
+    Mouse = 2
   }
 }

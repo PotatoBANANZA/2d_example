@@ -8,7 +8,6 @@ namespace CodeBase.Enemy
   {
     public EnemyAnimator Animator;
 
-    [SerializeField]
     private float _current;
 
     [SerializeField]
@@ -26,6 +25,11 @@ namespace CodeBase.Enemy
     {
       get => _max;
       set => _max = value;
+    }
+
+    private void Start()
+    {
+      _current = _max;
     }
 
     public void TakeDamage(float damage)
