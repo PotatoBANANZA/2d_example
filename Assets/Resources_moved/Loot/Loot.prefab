@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148823120736312362}
-  - component: {fileID: 1148823120732888074}
   - component: {fileID: 1148823120734019274}
   - component: {fileID: 2745575786205710774}
   m_Layer: 16
@@ -34,14 +33,6 @@ Transform:
   m_Father: {fileID: 6573276039690250080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1148823120732888074
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148823120736010250}
-  m_Mesh: {fileID: 4300000, guid: 03acf250cbc1f0f4f9661a49b7d1dede, type: 3}
 --- !u!23 &1148823120734019274
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -206,11 +197,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3635163630298570638, guid: 3d8f29094dcec0f419e5231ad2acbd23,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3673947263168810027, guid: 3d8f29094dcec0f419e5231ad2acbd23,
         type: 3}
       propertyPath: m_Pivot.x
@@ -318,31 +304,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259202369626320990, guid: 3d8f29094dcec0f419e5231ad2acbd23,
         type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 7259202369626320990, guid: 3d8f29094dcec0f419e5231ad2acbd23,
         type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 7259202369626320990, guid: 3d8f29094dcec0f419e5231ad2acbd23,
         type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7259202369626320990, guid: 3d8f29094dcec0f419e5231ad2acbd23,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7259202369626320990, guid: 3d8f29094dcec0f419e5231ad2acbd23,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3635163630298570638, guid: 3d8f29094dcec0f419e5231ad2acbd23, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8f29094dcec0f419e5231ad2acbd23, type: 3}
 --- !u!224 &945458298883678857 stripped
 RectTransform:
